@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>URL Shortner</title>
+</head>
+<body>
+   <div class="container">
+    <h1>URL Shortner</h1>
+    <form action="shortUrl" method="post" class="form-inline">
+        <div class="form-group mr-3 my-3">
+            <label class="sr-only" for="url" >URL</label>
+            <input class="form-control" placeholder="Enter your URL" type="text" name="url" required="true">
+        </div>
+        <button type="submit" class="btn btn-primary">Short</button>
+    </form>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>Full Url</th>
+            <th>Short Url</th>
+            <th>Clicks</th>
+            <th>Last click</th>
+        </tr>
+        
+        <% shortUrls.forEach((url) => { %>
+            <tr>
+                <td>
+                    <a href="/<%=url.url%>"><%=url.url%></a>
+                </td>
+                <td>
+                    <a href="/<%=url.shortUrl%>"><%=url.shortUrl%></a>
+                </td>
+                <td><%=url.clicks%></td>
+                <td><%=url.lastClick%></td>
+            </tr>
+          <% })%>
+    </table>
+   </div>
+</body>
+</html>
